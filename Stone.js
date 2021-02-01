@@ -7,14 +7,21 @@ class Stone{
             density:1.2
         }
         
-        this.body = Bodies.rectangle(x, y, 20, 20, options);
-        this.width = width;
-        this.height = height;
+        this.body = Bodies.rectangle(x,y, 20, 20, options);
+        World.add(world,this.body);
+        //this.width = width;
+        //this.height = height;
+        this.r = width;
         this.image = loadImage("stone.png");
-        World.add(world, this.body);
+        
     }
 
     display() {
-    image(this.image,200,20);
+        var angle = this.body.angle;
+        push();
+        translate(this.body.position.x, this.body.position.y);
+        rotate(angle);
+        image(this.image,0,0,this.r, this.r);
+        pop();
     } 
 }
